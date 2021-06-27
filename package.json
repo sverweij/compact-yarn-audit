@@ -1,6 +1,6 @@
 {
   "name": "compact-yarn-audit",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Presents output from yarn audit in a compact table",
   "engines": {
     "node": "^12.20||^14||>=16"
