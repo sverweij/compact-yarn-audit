@@ -1,3 +1,5 @@
+import uniqBy from "lodash.uniqby";
+
 function auditLog2Object(pAuditLog) {
   return JSON.parse(`[${pAuditLog.split("\n").join(",")}]`.replace(",]", "]"));
 }
@@ -9,7 +11,6 @@ function extractUsefulAttributesFromLogEntry(pLogEntry) {
   return {
     severity: pLogEntry.data.advisory.severity,
     title: pLogEntry.data.advisory.title,
-    cves: pLogEntry.data.advisory.cves.join(", "),
     fixable: lFixable,
     fixString: lFixable
       ? `"${pLogEntry.data.advisory.module_name}": "${pLogEntry.data.advisory.patched_versions}"`
@@ -30,15 +31,24 @@ function severity2Order(pSeverity) {
   return lSeverity2Order[pSeverity] || -1;
 }
 
+function unique(pTerseEntries) {}
+
 function sortEntry(pEntryLeft, pEntryRight) {
   return `${severity2Order(pEntryLeft.severity)}|${pEntryLeft.module_name}` >
     `${severity2Order(pEntryRight.severity)}|${pEntryRight.module_name}`
     ? 1
     : -1;
 }
+
+function wholeRecordAsString(pLogEntry) {
+  return `${pLogEntry.severity}|${pLogEntry.title}|${pLogEntry.fixString}|${pLogEntry.module_name}|${pLogEntry.via}`;
+}
 export function terseLog(pLog) {
-  return auditLog2Object(pLog)
-    .filter((pLogEntry) => pLogEntry.type === "auditAdvisory")
-    .map(extractUsefulAttributesFromLogEntry)
-    .sort(sortEntry);
+  return uniqBy(
+    auditLog2Object(pLog)
+      .filter((pLogEntry) => pLogEntry.type === "auditAdvisory")
+      .map(extractUsefulAttributesFromLogEntry)
+      .sort(sortEntry),
+    wholeRecordAsString
+  );
 }
