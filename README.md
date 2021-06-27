@@ -5,8 +5,12 @@ It presents `yarn audit` output in a compact table, ordered by severity.
 ## Usage
 
 ```sh
-yarn audit --json | npx tersify-yarn-audit
+yarn audit --json | npx compact-yarn-audit
 ```
+
+> Note: yarn's audit output can be quite large (gigabytes for a sizeable
+> monorepo that hasn't had updates for a while), so it can take
+> some time to process all that data.
 
 ## Sample output
 

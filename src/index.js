@@ -1,13 +1,22 @@
 #!/usr/bin/env node
-import getStream from "get-stream";
-import { terseLog } from "./log-to-terse-object.js";
+import ndjson from "ndjson";
+import { sortLog, extractUsefulAttributes } from "./log-to-terse-object.js";
 import { terseLog2Table } from "./terse-object-to-table.js";
 
-getStream(process.stdin)
-  .then((pLog) => {
-    const lTerseLog = terseLog(pLog);
-    console.log(terseLog2Table(lTerseLog));
+let lLog = [];
+
+process.stdin
+  .pipe(ndjson.parse())
+  .on("data", (pLogEntry) => {
+    if (pLogEntry.type === "auditAdvisory") {
+      lLog.push(extractUsefulAttributes(pLogEntry));
+    }
   })
-  .catch((pError) => {
+  .on("error", (pError) => {
     console.error(pError);
+    process.exitCode = 1;
+    process.exit();
+  })
+  .on("end", () => {
+    console.log(terseLog2Table(sortLog(lLog)));
   });

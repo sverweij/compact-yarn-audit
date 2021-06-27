@@ -32,8 +32,8 @@
   ],
   "dependencies": {
     "chalk": "^2.4.0",
-    "get-stream": "^6.0.1",
     "lodash.uniqby": "^4.7.0",
+    "ndjson": "^2.0.0",
     "strip-ansi": "^7.0.0",
     "text-table": "^0.2.0"
   },
