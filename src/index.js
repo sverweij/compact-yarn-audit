@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import getStream from "get-stream";
 import { terseLog } from "./log-to-terse-object.js";
 import { terseLog2Table } from "./terse-object-to-table.js";
