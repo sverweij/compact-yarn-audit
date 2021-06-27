@@ -1,0 +1,23 @@
+severity  title                      module                    via                       "resolutions" string
+critical  Command Injection          destructomatic            vertex-cli                no fix available
+critical  Remote code execution whe  steering-wheel            beach-cruiser             "steering-wheel": ">=4.7.7"
+critical  Prototype Pollution        steering-wheel            beach-cruiser             "steering-wheel": ">=4.0.14 <4.1.0 || >=4.1.2"
+high      Regular Expression Denial  oedipus-regex             vertexql-validated-types  no fix available
+high      Command Injection          snowdash                  beach-cruiser             "snowdash": ">=4.17.21"
+high      Prototype Pollution        snowdash                  beach-cruiser             "snowdash": ">=4.17.12"
+high      Prototype Pollution        snowdash                  beach-cruiser             "snowdash": ">=4.17.11"
+high      Command Injection          snowdash                  .                         "snowdash": ">=4.17.21"
+high      Prototype Pollution        snowdash                  .                         "snowdash": ">=4.17.12"
+high      Prototype Pollution        snowdash                  .                         "snowdash": ">=4.17.11"
+high      Prototype Pollution        steering-wheel            beach-cruiser             "steering-wheel": ">=3.0.8 <4.0.0 || >=4.5.3"
+high      Arbitrary Code Execution   steering-wheel            beach-cruiser             "steering-wheel": ">=3.0.8 <4.0.0 || >=4.5.3"
+high      Arbitrary Code Execution   steering-wheel            beach-cruiser             "steering-wheel": ">=3.0.8 <4.0.0 || >=4.5.2"
+high      Prototype Pollution        steering-wheel            beach-cruiser             "steering-wheel": ">=3.0.8 <4.0.0 || >=4.3.0"
+moderate  Information Exposure       apollo-server-core        saturnus-server-accident  "apollo-server-core": ">=2.14.2"
+moderate  Regular Expression Denial  chestnut                  beach-cruiser             "chestnut": ">=5.7.4 <6.0.0 || >=6.4.1 <7.0.0 || >=7.1.1"
+moderate  Information Exposure       saturnus-server-accident  .                         "saturnus-server-accident": ">=2.14.2"
+moderate  Denial of Service          steering-wheel            beach-cruiser             "steering-wheel": ">=4.4.5"
+low       Prototype Pollution        minifog                   beach-cruiser             "minifog": ">=0.2.1 <1.0.0 || >=1.2.3"
+low       Prototype Pollution        snowdash                  beach-cruiser             "snowdash": ">=4.17.19"
+low       Prototype Pollution        snowdash                  .                         "snowdash": ">=4.17.19"
+low       Prototype Pollution        snowdash                  .                         "snowdash": ">=4.17.5"

@@ -1,0 +1,200 @@
+[
+  {
+    "severity": "critical",
+    "title": "Command Injection",
+    "cves": "CVE-2020-7614",
+    "fixable": false,
+    "fixString": "no fix available",
+    "module_name": "destructomatic",
+    "via": "vertex-cli"
+  },
+  {
+    "severity": "critical",
+    "title": "Remote code execution when compiling templates",
+    "cves": "CVE-2021-23369",
+    "fixable": true,
+    "fixString": "\"steering-wheel\": \">=4.7.7\"",
+    "module_name": "steering-wheel",
+    "via": "beach-cruiser"
+  },
+  {
+    "severity": "critical",
+    "title": "Prototype Pollution",
+    "cves": "",
+    "fixable": true,
+    "fixString": "\"steering-wheel\": \">=4.0.14 <4.1.0 || >=4.1.2\"",
+    "module_name": "steering-wheel",
+    "via": "beach-cruiser"
+  },
+  {
+    "severity": "high",
+    "title": "Regular Expression Denial of Service",
+    "cves": "",
+    "fixable": false,
+    "fixString": "no fix available",
+    "module_name": "oedipus-regex",
+    "via": "vertexql-validated-types"
+  },
+  {
+    "severity": "high",
+    "title": "Command Injection",
+    "cves": "CVE-2021-23337",
+    "fixable": true,
+    "fixString": "\"snowdash\": \">=4.17.21\"",
+    "module_name": "snowdash",
+    "via": "beach-cruiser"
+  },
+  {
+    "severity": "high",
+    "title": "Prototype Pollution",
+    "cves": "CVE-2019-10744",
+    "fixable": true,
+    "fixString": "\"snowdash\": \">=4.17.12\"",
+    "module_name": "snowdash",
+    "via": "beach-cruiser"
+  },
+  {
+    "severity": "high",
+    "title": "Prototype Pollution",
+    "cves": "CVE-2018-16487",
+    "fixable": true,
+    "fixString": "\"snowdash\": \">=4.17.11\"",
+    "module_name": "snowdash",
+    "via": "beach-cruiser"
+  },
+  {
+    "severity": "high",
+    "title": "Command Injection",
+    "cves": "CVE-2021-23337",
+    "fixable": true,
+    "fixString": "\"snowdash\": \">=4.17.21\"",
+    "module_name": "snowdash",
+    "via": "."
+  },
+  {
+    "severity": "high",
+    "title": "Prototype Pollution",
+    "cves": "CVE-2019-10744",
+    "fixable": true,
+    "fixString": "\"snowdash\": \">=4.17.12\"",
+    "module_name": "snowdash",
+    "via": "."
+  },
+  {
+    "severity": "high",
+    "title": "Prototype Pollution",
+    "cves": "CVE-2018-16487",
+    "fixable": true,
+    "fixString": "\"snowdash\": \">=4.17.11\"",
+    "module_name": "snowdash",
+    "via": "."
+  },
+  {
+    "severity": "high",
+    "title": "Prototype Pollution",
+    "cves": "",
+    "fixable": true,
+    "fixString": "\"steering-wheel\": \">=3.0.8 <4.0.0 || >=4.5.3\"",
+    "module_name": "steering-wheel",
+    "via": "beach-cruiser"
+  },
+  {
+    "severity": "high",
+    "title": "Arbitrary Code Execution",
+    "cves": "",
+    "fixable": true,
+    "fixString": "\"steering-wheel\": \">=3.0.8 <4.0.0 || >=4.5.3\"",
+    "module_name": "steering-wheel",
+    "via": "beach-cruiser"
+  },
+  {
+    "severity": "high",
+    "title": "Arbitrary Code Execution",
+    "cves": "",
+    "fixable": true,
+    "fixString": "\"steering-wheel\": \">=3.0.8 <4.0.0 || >=4.5.2\"",
+    "module_name": "steering-wheel",
+    "via": "beach-cruiser"
+  },
+  {
+    "severity": "high",
+    "title": "Prototype Pollution",
+    "cves": "CVE-2019-19919",
+    "fixable": true,
+    "fixString": "\"steering-wheel\": \">=3.0.8 <4.0.0 || >=4.3.0\"",
+    "module_name": "steering-wheel",
+    "via": "beach-cruiser"
+  },
+  {
+    "severity": "moderate",
+    "title": "Information Exposure",
+    "cves": "",
+    "fixable": true,
+    "fixString": "\"apollo-server-core\": \">=2.14.2\"",
+    "module_name": "apollo-server-core",
+    "via": "saturnus-server-accident"
+  },
+  {
+    "severity": "moderate",
+    "title": "Regular Expression Denial of Service",
+    "cves": "",
+    "fixable": true,
+    "fixString": "\"chestnut\": \">=5.7.4 <6.0.0 || >=6.4.1 <7.0.0 || >=7.1.1\"",
+    "module_name": "chestnut",
+    "via": "beach-cruiser"
+  },
+  {
+    "severity": "moderate",
+    "title": "Information Exposure",
+    "cves": "",
+    "fixable": true,
+    "fixString": "\"saturnus-server-accident\": \">=2.14.2\"",
+    "module_name": "saturnus-server-accident",
+    "via": "."
+  },
+  {
+    "severity": "moderate",
+    "title": "Denial of Service",
+    "cves": "",
+    "fixable": true,
+    "fixString": "\"steering-wheel\": \">=4.4.5\"",
+    "module_name": "steering-wheel",
+    "via": "beach-cruiser"
+  },
+  {
+    "severity": "low",
+    "title": "Prototype Pollution",
+    "cves": "",
+    "fixable": true,
+    "fixString": "\"minifog\": \">=0.2.1 <1.0.0 || >=1.2.3\"",
+    "module_name": "minifog",
+    "via": "beach-cruiser"
+  },
+  {
+    "severity": "low",
+    "title": "Prototype Pollution",
+    "cves": "CVE-2019-10744",
+    "fixable": true,
+    "fixString": "\"snowdash\": \">=4.17.19\"",
+    "module_name": "snowdash",
+    "via": "beach-cruiser"
+  },
+  {
+    "severity": "low",
+    "title": "Prototype Pollution",
+    "cves": "CVE-2019-10744",
+    "fixable": true,
+    "fixString": "\"snowdash\": \">=4.17.19\"",
+    "module_name": "snowdash",
+    "via": "."
+  },
+  {
+    "severity": "low",
+    "title": "Prototype Pollution",
+    "cves": "CVE-2018-3721",
+    "fixable": true,
+    "fixString": "\"snowdash\": \">=4.17.5\"",
+    "module_name": "snowdash",
+    "via": "."
+  }
+]
