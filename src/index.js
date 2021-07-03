@@ -1,16 +1,14 @@
 #!/usr/bin/env node
 import ndjson from "ndjson";
-import { sortLog, extractUsefulAttributes } from "./log-to-terse-object.js";
-import { terseLog2Table } from "./terse-object-to-table.js";
+import { TerseAdvisoryLog } from "./terse-advisory-log.js";
+import { TerseAdvisoryLog2Table } from "./terse-advisory-to-table.js";
 
-let lLog = [];
+const lAdvisaryLog = new TerseAdvisoryLog();
 
 process.stdin
   .pipe(ndjson.parse())
   .on("data", (pLogEntry) => {
-    if (pLogEntry.type === "auditAdvisory") {
-      lLog.push(extractUsefulAttributes(pLogEntry));
-    }
+    lAdvisaryLog.add(pLogEntry);
   })
   .on("error", (pError) => {
     console.error(pError);
@@ -18,5 +16,5 @@ process.stdin
     process.exit();
   })
   .on("end", () => {
-    console.log(terseLog2Table(sortLog(lLog)));
+    console.log(TerseAdvisoryLog2Table(lAdvisaryLog.get()));
   });

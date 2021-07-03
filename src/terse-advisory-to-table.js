@@ -24,7 +24,7 @@ function tableTheThing(pAll, pExtractedLogEntry) {
   return pAll;
 }
 
-export function terseLog2Table(pTerseLog) {
+export function TerseAdvisoryLog2Table(pTerseAdvisoryLog) {
   const lTable = [
     ["severity", "title", "module", "via", '"resolutions" string'].map(
       (pHeader) => chalk.bold(pHeader)
@@ -34,5 +34,5 @@ export function terseLog2Table(pTerseLog) {
     align: ["l", "l", "l", "l", "l", "l"],
     stringLength: (pString) => stripAnsi(pString).length,
   };
-  return textTable(pTerseLog.reduce(tableTheThing, lTable), lTableOpts);
+  return textTable(pTerseAdvisoryLog.reduce(tableTheThing, lTable), lTableOpts);
 }

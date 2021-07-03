@@ -3,7 +3,7 @@ import { readFileSync } from "fs";
 import { join } from "path";
 import { expect } from "chai";
 import chalk from "chalk";
-import { terseLog2Table } from "../src/terse-object-to-table.js";
+import { TerseAdvisoryLog2Table } from "../src/terse-advisory-to-table.js";
 
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
 
@@ -20,7 +20,7 @@ describe("terse-object-to-table - smoke test", () => {
 
   it("transforms a terse object to a table", () => {
     expect(
-      terseLog2Table(
+      TerseAdvisoryLog2Table(
         JSON.parse(
           readFileSync(join(__dirname, "sample-output.terselog.json"), "utf8")
         )
