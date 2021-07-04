@@ -1,4 +1,4 @@
-import { createHash } from "crypto";
+import { createHash } from "node:crypto";
 
 function hash(pObject) {
   return createHash("md5").update(JSON.stringify(pObject)).digest("base64");
