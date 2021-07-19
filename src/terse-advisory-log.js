@@ -8,7 +8,7 @@ function extractUsefulAttributes(pLogEntry) {
   const lFixable = pLogEntry.data.advisory.patched_versions !== "<0.0.0";
   const lVia = pLogEntry.data.resolution.path.split(">").shift();
 
-  const lReturnValue = {
+  return {
     severity: pLogEntry.data.advisory.severity,
     title: pLogEntry.data.advisory.title,
     fixable: lFixable,
@@ -17,10 +17,6 @@ function extractUsefulAttributes(pLogEntry) {
       : "no fix available",
     module_name: pLogEntry.data.advisory.module_name,
     via: lVia === pLogEntry.data.advisory.module_name ? "." : lVia,
-  };
-  return {
-    hash: hash(lReturnValue),
-    ...lReturnValue,
   };
 }
 function severity2Order(pSeverity) {
@@ -43,12 +39,10 @@ function orderEntry(pEntryLeft, pEntryRight) {
 }
 
 export class TerseAdvisoryLog {
-  log = [];
-  set = new Set();
+  log = new Map();
 
   constructor() {
-    this.log = [];
-    this.set = new Set();
+    this.log = new Map();
   }
 
   add(pEntry) {
@@ -56,17 +50,13 @@ export class TerseAdvisoryLog {
       const lUsefulAttributes = extractUsefulAttributes(pEntry);
 
       // Some auditlogs are several gigabytes long. Given that there'll
-      // be quite some duplicates, the overhead of the Set and the hash
-      // will be negligable compared to the amount of memory that'd normally
-      // be needed
-      if (!this.set.has(lUsefulAttributes.hash)) {
-        this.set.add(lUsefulAttributes.hash);
-        this.log.push(lUsefulAttributes);
-      }
+      // be quite some duplicates, the overhead of the hash will be negligable
+      // compared to the amount of memory that'd normally be needed
+      this.log.set(hash(lUsefulAttributes), lUsefulAttributes);
     }
   }
 
   get() {
-    return this.log.sort(orderEntry);
+    return [...this.log.values()].sort(orderEntry);
   }
 }

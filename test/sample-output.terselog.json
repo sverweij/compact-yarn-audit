@@ -1,6 +1,5 @@
 [
   {
-    "hash": "+73YxsI/51iZAT/9HuXn3w==",
     "severity": "critical",
     "title": "Command Injection",
     "fixable": false,
@@ -9,7 +8,6 @@
     "via": "vertex-cli"
   },
   {
-    "hash": "ahHuVMuNV6O3GOAN2oJS6w==",
     "severity": "critical",
     "title": "Remote code execution when compiling templates",
     "fixable": true,
@@ -18,7 +16,6 @@
     "via": "beach-cruiser"
   },
   {
-    "hash": "/mQVmaSgbizZnTQkZr+oDw==",
     "severity": "critical",
     "title": "Prototype Pollution",
     "fixable": true,
@@ -27,7 +24,6 @@
     "via": "beach-cruiser"
   },
   {
-    "hash": "fqWXHhp3xbSvlgdtIxqjQQ==",
     "severity": "high",
     "title": "Regular Expression Denial of Service",
     "fixable": false,
@@ -36,7 +32,6 @@
     "via": "vertexql-validated-types"
   },
   {
-    "hash": "oGqiB0nfbdbHtVc7byvGAA==",
     "severity": "high",
     "title": "Command Injection",
     "fixable": true,
@@ -45,7 +40,6 @@
     "via": "beach-cruiser"
   },
   {
-    "hash": "aSsmJ0T9XK6QxV65OrXhzQ==",
     "severity": "high",
     "title": "Prototype Pollution",
     "fixable": true,
@@ -54,7 +48,6 @@
     "via": "beach-cruiser"
   },
   {
-    "hash": "nhlFOZkR4njmoCvezFWiwg==",
     "severity": "high",
     "title": "Prototype Pollution",
     "fixable": true,
@@ -63,7 +56,6 @@
     "via": "beach-cruiser"
   },
   {
-    "hash": "e69v4LvmMX74C+mLj02DOQ==",
     "severity": "high",
     "title": "Command Injection",
     "fixable": true,
@@ -72,7 +64,6 @@
     "via": "."
   },
   {
-    "hash": "WHWXU/CWDChD1D/cUdfbVA==",
     "severity": "high",
     "title": "Prototype Pollution",
     "fixable": true,
@@ -81,7 +72,6 @@
     "via": "."
   },
   {
-    "hash": "IK+rozFgHGe5zpOiVdzmbA==",
     "severity": "high",
     "title": "Prototype Pollution",
     "fixable": true,
@@ -90,7 +80,6 @@
     "via": "."
   },
   {
-    "hash": "XOGivO5zWEBlpjpw51raOw==",
     "severity": "high",
     "title": "Prototype Pollution",
     "fixable": true,
@@ -99,7 +88,6 @@
     "via": "beach-cruiser"
   },
   {
-    "hash": "dDRLt3cB+T6dRanoLmOa8Q==",
     "severity": "high",
     "title": "Arbitrary Code Execution",
     "fixable": true,
@@ -108,7 +96,6 @@
     "via": "beach-cruiser"
   },
   {
-    "hash": "dk87gPdHQLvKD90rKy/l/A==",
     "severity": "high",
     "title": "Arbitrary Code Execution",
     "fixable": true,
@@ -117,7 +104,6 @@
     "via": "beach-cruiser"
   },
   {
-    "hash": "SqsqicriW4Gf2Le0En3S7g==",
     "severity": "high",
     "title": "Prototype Pollution",
     "fixable": true,
@@ -126,7 +112,6 @@
     "via": "beach-cruiser"
   },
   {
-    "hash": "ojlH4yyZg60gXtxAxsAZfw==",
     "severity": "moderate",
     "title": "Information Exposure",
     "fixable": true,
@@ -135,7 +120,6 @@
     "via": "saturnus-server-accident"
   },
   {
-    "hash": "Nx5zeYzAlQcJna4rXTeCPw==",
     "severity": "moderate",
     "title": "Regular Expression Denial of Service",
     "fixable": true,
@@ -144,7 +128,6 @@
     "via": "beach-cruiser"
   },
   {
-    "hash": "1WASUMQ+MuxFVVIpmuV10w==",
     "severity": "moderate",
     "title": "Information Exposure",
     "fixable": true,
@@ -153,7 +136,6 @@
     "via": "."
   },
   {
-    "hash": "wBhwzPzPBYpXnmwJSvahkw==",
     "severity": "moderate",
     "title": "Denial of Service",
     "fixable": true,
@@ -162,7 +144,6 @@
     "via": "beach-cruiser"
   },
   {
-    "hash": "kLlasqFROpbjEIqiIpXf0Q==",
     "severity": "low",
     "title": "Prototype Pollution",
     "fixable": true,
@@ -171,7 +152,6 @@
     "via": "beach-cruiser"
   },
   {
-    "hash": "dRRY+vBFGuHMKKv2F+wIvQ==",
     "severity": "low",
     "title": "Prototype Pollution",
     "fixable": true,
@@ -180,7 +160,6 @@
     "via": "beach-cruiser"
   },
   {
-    "hash": "dqCHwY1yZiUEiRgx1I/+YQ==",
     "severity": "low",
     "title": "Prototype Pollution",
     "fixable": true,
@@ -189,7 +168,6 @@
     "via": "."
   },
   {
-    "hash": "reKL8C6wdUh2K6+DME2s2w==",
     "severity": "low",
     "title": "Prototype Pollution",
     "fixable": true,
