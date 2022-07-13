@@ -22,11 +22,17 @@ describe("terse-object-to-table - smoke test", () => {
     expect(
       TerseAdvisoryLog2Table(
         JSON.parse(
-          readFileSync(join(__dirname, "sample-output.terselog.json"), "utf8")
+          readFileSync(
+            join(__dirname, "__fixtures__", "sample-output.terselog.json"),
+            "utf8"
+          )
         )
       )
     ).to.deep.equal(
-      readFileSync(join(__dirname, "sample-output.table.txt"), "utf8")
+      readFileSync(
+        join(__dirname, "__fixtures__", "sample-output.table.txt"),
+        "utf8"
+      )
     );
   });
 });
