@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import ndjson from "ndjson";
 import { TerseAdvisoryLog } from "./terse-advisory-log.js";
-import { TerseAdvisoryLog2Table } from "./terse-advisory-to-table.js";
+import format from "./format.js";
 
 const lAdvisaryLog = new TerseAdvisoryLog();
 
@@ -16,5 +16,5 @@ process.stdin
     process.exit();
   })
   .on("end", () => {
-    console.log(TerseAdvisoryLog2Table(lAdvisaryLog.get()));
+    console.log(format(lAdvisaryLog.get()));
   });
