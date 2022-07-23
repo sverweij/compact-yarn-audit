@@ -2,6 +2,11 @@ import textTable from "text-table";
 import chalk from "chalk";
 import stripAnsi from "strip-ansi";
 
+/**
+ *
+ * @param {import("../types/compact-yarn-audit").SeverityType} pSeverity
+ * @returns {import("chalk").ChalkInstance}
+ */
 function colorSeverity(pSeverity) {
   const lSeverity2ChalkFunction = {
     critical: chalk.red,
@@ -12,19 +17,33 @@ function colorSeverity(pSeverity) {
   const lFunction = lSeverity2ChalkFunction[pSeverity] || ((x) => x);
   return lFunction(pSeverity);
 }
-
-function tableTheThing(pAll, pExtractedLogEntry) {
-  pAll.push([
-    colorSeverity(pExtractedLogEntry.severity),
-    pExtractedLogEntry.title.substr(0, 25),
-    pExtractedLogEntry.module_name,
-    pExtractedLogEntry.via,
-    pExtractedLogEntry.fixString,
-  ]);
-  return pAll;
+/**
+ *
+ * @param {number} pMaxTitleWidth
+ * @returns {(string[][], import("../types/compact-yarn-audit").ITerseEntry) => string[][]})}
+ */
+function tableTheThing(pMaxTitleWidth) {
+  return (pAll, pExtractedLogEntry) => {
+    pAll.push([
+      colorSeverity(pExtractedLogEntry.severity),
+      pExtractedLogEntry.title.substring(0, pMaxTitleWidth),
+      pExtractedLogEntry.module_name,
+      pExtractedLogEntry.via,
+      pExtractedLogEntry.fixString,
+    ]);
+    return pAll;
+  };
 }
 
-export function TerseAdvisoryLog2Table(pTerseAdvisoryLog) {
+/**
+ *
+ * @param {import("../types/compact-yarn-audit").ITerseEntry[]} pTerseEntries
+ * @returns {string}
+ */
+export function TerseAdvisoryLog2Table(
+  pTerseEntries,
+  pColumnsAvailable = process.stdout.columns
+) {
   const lTable = [
     ["severity", "title", "module", "via", '"resolutions" string'].map(
       (pHeader) => chalk.bold(pHeader)
@@ -34,5 +53,10 @@ export function TerseAdvisoryLog2Table(pTerseAdvisoryLog) {
     align: ["l", "l", "l", "l", "l", "l"],
     stringLength: (pString) => stripAnsi(pString).length,
   };
-  return textTable(pTerseAdvisoryLog.reduce(tableTheThing, lTable), lTableOpts);
+  const lMaxTitleWidth = Math.round(pColumnsAvailable / 5);
+
+  return textTable(
+    pTerseEntries.reduce(tableTheThing(lMaxTitleWidth), lTable),
+    lTableOpts
+  );
 }

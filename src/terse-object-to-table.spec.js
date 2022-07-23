@@ -18,7 +18,7 @@ describe("terse-object-to-table - smoke test", () => {
     chalk.level = chalkLevel;
   });
 
-  it("transforms a terse object to a table", () => {
+  it("transforms a terse object to a table (terminal has 125 columns available)", () => {
     expect(
       TerseAdvisoryLog2Table(
         JSON.parse(
@@ -26,11 +26,31 @@ describe("terse-object-to-table - smoke test", () => {
             join(__dirname, "__fixtures__", "sample-output.terselog.json"),
             "utf8"
           )
-        )
+        ),
+        125
       )
     ).to.deep.equal(
       readFileSync(
         join(__dirname, "__fixtures__", "sample-output.table.txt"),
+        "utf8"
+      )
+    );
+  });
+
+  it("transforms a terse object to a table (terminal has 1000 columns available)", () => {
+    expect(
+      TerseAdvisoryLog2Table(
+        JSON.parse(
+          readFileSync(
+            join(__dirname, "__fixtures__", "sample-output.terselog.json"),
+            "utf8"
+          )
+        ),
+        1000
+      )
+    ).to.deep.equal(
+      readFileSync(
+        join(__dirname, "__fixtures__", "sample-output.wide-table.txt"),
         "utf8"
       )
     );
