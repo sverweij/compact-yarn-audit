@@ -47,6 +47,7 @@
   "files": [
     "src/**/*.js",
     "!src/**/*.spec.js",
+    "types",
     "package.json",
     "README.md"
   ]
