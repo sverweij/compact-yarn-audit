@@ -21,6 +21,7 @@
   "main": "src/index.js",
   "exports": "./src/index.js",
   "type": "module",
+  "types": "types/compact-yarn-audit.d.ts",
   "scripts": {
     "format": "prettier --write src/**/*.js *.md",
     "scm:stage": "git add .",
