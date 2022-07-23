@@ -40,7 +40,7 @@ function tableTheThing(pMaxTitleWidth) {
  * @param {import("../types/compact-yarn-audit").ITerseEntry[]} pTerseEntries
  * @returns {string}
  */
-export function TerseAdvisoryLog2Table(
+export function terseAdvisoryLog2Table(
   pTerseEntries,
   pColumnsAvailable = process.stdout.columns
 ) {
