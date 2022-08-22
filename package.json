@@ -27,6 +27,7 @@
     "scm:stage": "git add .",
     "test": "mocha src --exit",
     "update-dependencies": "npm-run-all upem:update upem:install format test",
+    "upem-outdated": "npm outdated --json --long | upem --dry-run",
     "upem:update": "npm outdated --json --long | upem | pbcopy && pbpaste",
     "upem:install": "npm install",
     "version": "npm-run-all test scm:stage"
@@ -45,8 +46,8 @@
     "chai": "4.3.6",
     "mocha": "10.0.0",
     "npm-run-all": "4.1.5",
-    "prettier": "^2.7.1",
-    "upem": "7.2.0"
+    "prettier": "2.7.1",
+    "upem": "7.3.0"
   },
   "files": [
     "src/**/*.js",
