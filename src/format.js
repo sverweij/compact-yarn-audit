@@ -1,5 +1,5 @@
-import { terseAdvisoryLog2Table } from "./terse-advisory-to-table.js";
 import { EOL } from "node:os";
+import { terseAdvisoryLog2Table } from "./terse-advisory-to-table.js";
 
 /**
  *

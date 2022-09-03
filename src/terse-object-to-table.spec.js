@@ -1,9 +1,9 @@
-import { fileURLToPath } from "url";
-import { readFileSync } from "fs";
-import { join } from "path";
+import { fileURLToPath } from "node:url";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import { expect } from "chai";
 import chalk from "chalk";
-import { terseAdvisoryLog2Table } from "../src/terse-advisory-to-table.js";
+import { terseAdvisoryLog2Table } from "./terse-advisory-to-table.js";
 
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
 

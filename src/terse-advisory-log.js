@@ -42,6 +42,7 @@ function severity2Order(pSeverity) {
     low: 4,
     info: 5,
   };
+  // eslint-disable-next-line security/detect-object-injection
   return lSeverity2Order[pSeverity] || -1;
 }
 
