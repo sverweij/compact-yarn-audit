@@ -1,14 +1,15 @@
 #!/usr/bin/env node
+/* eslint-disable no-console, node/no-process-exit */
 import ndjson from "ndjson";
 import { TerseAdvisoryLog } from "./terse-advisory-log.js";
 import format from "./format.js";
 
-const lAdvisaryLog = new TerseAdvisoryLog();
+const lAdvisoryLog = new TerseAdvisoryLog();
 
 process.stdin
   .pipe(ndjson.parse())
   .on("data", (pLogEntry) => {
-    lAdvisaryLog.add(pLogEntry);
+    lAdvisoryLog.add(pLogEntry);
   })
   .on("error", (pError) => {
     console.error(pError);
@@ -16,5 +17,5 @@ process.stdin
     process.exit();
   })
   .on("end", () => {
-    console.log(format(lAdvisaryLog.get()));
+    console.log(format(lAdvisoryLog.get()));
   });

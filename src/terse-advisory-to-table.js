@@ -14,7 +14,8 @@ function colorSeverity(pSeverity) {
     moderate: chalk.yellow,
     info: chalk.blue,
   };
-  const lFunction = lSeverity2ChalkFunction[pSeverity] || ((x) => x);
+  // eslint-disable-next-line security/detect-object-injection
+  const lFunction = lSeverity2ChalkFunction[pSeverity] || ((pX) => pX);
   return lFunction(pSeverity);
 }
 /**
@@ -26,7 +27,7 @@ function tableTheThing(pMaxTitleWidth) {
   return (pAll, pExtractedLogEntry) => {
     pAll.push([
       colorSeverity(pExtractedLogEntry.severity),
-      pExtractedLogEntry.title.substring(0, pMaxTitleWidth),
+      pExtractedLogEntry.title.slice(0, Math.max(0, pMaxTitleWidth)),
       pExtractedLogEntry.module_name,
       pExtractedLogEntry.via,
       pExtractedLogEntry.fixString,
@@ -49,14 +50,17 @@ export function terseAdvisoryLog2Table(
       (pHeader) => chalk.bold(pHeader)
     ),
   ];
-  const lTableOpts = {
+  const lTableOptions = {
     align: ["l", "l", "l", "l", "l", "l"],
     stringLength: (pString) => stripAnsi(pString).length,
   };
-  const lMaxTitleWidth = Math.round(pColumnsAvailable / 5);
+  const lTitleMagicDivisionFactor = 5;
+  const lMaxTitleWidth = Math.round(
+    pColumnsAvailable / lTitleMagicDivisionFactor
+  );
 
   return textTable(
     pTerseEntries.reduce(tableTheThing(lMaxTitleWidth), lTable),
-    lTableOpts
+    lTableOptions
   );
 }
