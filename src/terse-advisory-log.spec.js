@@ -1,7 +1,7 @@
 import { fileURLToPath } from "node:url";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
-import { expect } from "chai";
+import { deepEqual } from "node:assert";
 import { TerseAdvisoryLog } from "./terse-advisory-log.js";
 
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
@@ -21,7 +21,8 @@ describe("log-to-terse-object - smoke test", () => {
         lAdvisoryLog.add(pLogEntry);
       });
 
-    expect(lAdvisoryLog.get()).to.deep.equal(
+    deepEqual(
+      lAdvisoryLog.get(),
       JSON.parse(
         readFileSync(
           join(__dirname, "__fixtures__", "sample-output.terselog.json"),
