@@ -2,11 +2,11 @@ import { createHash } from "node:crypto";
 
 /**
  *
- * @param {import("../types/compact-yarn-audit").ITerseEntry} pObject
+ * @param {import("../types/compact-yarn-audit").ITerseEntry} pEntry
  * @returns {string}
  */
-function hash(pObject) {
-  return createHash("md5").update(JSON.stringify(pObject)).digest("base64");
+function hash(pEntry) {
+  return createHash("md5").update(JSON.stringify(pEntry)).digest("base64");
 }
 
 /**
@@ -72,12 +72,16 @@ export class TerseAdvisoryLog {
     this.log = new Map();
   }
 
+  /**
+   *
+   * @param {import("../types/compact-yarn-audit").ITerseEntry} pEntry
+   */
   add(pEntry) {
     if (pEntry.type === "auditAdvisory") {
       const lUsefulAttributes = extractUsefulAttributes(pEntry);
 
       // Some audit logs are several gigabytes long. Given that there'll
-      // be quite some duplicates, the overhead of the hash will be negligable
+      // be quite some duplicates, the overhead of the hash will be negligible
       // compared to the amount of memory that'd normally be needed
       this.log.set(hash(lUsefulAttributes), lUsefulAttributes);
     }
