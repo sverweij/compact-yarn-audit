@@ -1,9 +1,9 @@
-import { expect } from "chai";
+import { match } from "node:assert";
 import format from "./format.js";
 
 describe("format - smoke test", () => {
   it("emits a message conveying there's no vulnerabilities when the # of terse entries === 0", () => {
-    expect(format([])).to.contain("no vulnerabilities found");
+    match(format([]), /no vulnerabilities found/);
   });
 
   it("emits a table when the # of terse entries > 0", () => {
@@ -18,7 +18,8 @@ describe("format - smoke test", () => {
         fixString: "buy fresh fish",
       },
     ];
-    expect(format(lTerseEntries)).to.contain("severity");
-    expect(format(lTerseEntries)).to.contain("title");
+
+    match(format(lTerseEntries), /severity/);
+    match(format(lTerseEntries), /title/);
   });
 });

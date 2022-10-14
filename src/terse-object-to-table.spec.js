@@ -1,7 +1,7 @@
 import { fileURLToPath } from "node:url";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
-import { expect } from "chai";
+import { deepEqual } from "node:assert";
 import chalk from "chalk";
 import { terseAdvisoryLog2Table } from "./terse-advisory-to-table.js";
 
@@ -19,7 +19,7 @@ describe("terse-object-to-table - smoke test", () => {
   });
 
   it("transforms a terse object to a table (terminal has 125 columns available)", () => {
-    expect(
+    deepEqual(
       terseAdvisoryLog2Table(
         JSON.parse(
           readFileSync(
@@ -28,8 +28,7 @@ describe("terse-object-to-table - smoke test", () => {
           )
         ),
         125
-      )
-    ).to.deep.equal(
+      ),
       readFileSync(
         join(__dirname, "__fixtures__", "sample-output.table.txt"),
         "utf8"
@@ -38,7 +37,7 @@ describe("terse-object-to-table - smoke test", () => {
   });
 
   it("transforms a terse object to a table (terminal has 1000 columns available)", () => {
-    expect(
+    deepEqual(
       terseAdvisoryLog2Table(
         JSON.parse(
           readFileSync(
@@ -47,8 +46,7 @@ describe("terse-object-to-table - smoke test", () => {
           )
         ),
         1000
-      )
-    ).to.deep.equal(
+      ),
       readFileSync(
         join(__dirname, "__fixtures__", "sample-output.wide-table.txt"),
         "utf8"
