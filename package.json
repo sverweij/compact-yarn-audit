@@ -16,19 +16,22 @@
   },
   "author": "Sander Verweij (https://sverweij.github.io/)",
   "bin": {
-    "compact-yarn-audit": "src/index.js"
+    "compact-yarn-audit": "dist/index.js"
   },
-  "main": "src/index.js",
-  "exports": "./src/index.js",
+  "main": "dist/index.js",
+  "exports": "./dist/index.js",
   "type": "module",
   "types": "types/compact-yarn-audit.d.ts",
   "scripts": {
+    "build": "npm-run-all clean build:ts",
+    "build:ts": "tsc",
     "check": "npm-run-all format lint test",
-    "format": "prettier --write src/**/*.js *.md",
+    "clean": "rm -rf dist",
+    "format": "prettier --write src/**/*.ts *.md",
     "lint": "eslint src types --cache --cache-location node_modules/.cache/eslint/",
     "lint:fix": "eslint src types --fix --cache --cache-location node_modules/.cache/eslint/",
     "scm:stage": "git add .",
-    "test": "mocha src --exit",
+    "test": "NODE_OPTIONS=--no-warnings mocha --exit",
     "update-dependencies": "npm-run-all upem:update upem:install format test",
     "upem-outdated": "npm outdated --json --long | upem --dry-run",
     "upem:update": "npm outdated --json --long | upem | pbcopy && pbpaste",
@@ -46,6 +49,9 @@
     "text-table": "^0.2.0"
   },
   "devDependencies": {
+    "@types/mocha": "10.0.0",
+    "@types/ndjson": "2.0.1",
+    "@types/text-table": "0.2.2",
     "@typescript-eslint/eslint-plugin": "5.40.0",
     "@typescript-eslint/parser": "5.40.0",
     "eslint": "8.25.0",
@@ -61,12 +67,12 @@
     "mocha": "10.0.0",
     "npm-run-all": "4.1.5",
     "prettier": "2.7.1",
+    "ts-node": "10.9.1",
     "typescript": "4.8.4",
     "upem": "7.3.0"
   },
   "files": [
-    "src/**/*.js",
-    "!src/**/*.spec.js",
+    "dist",
     "types",
     "package.json",
     "README.md"

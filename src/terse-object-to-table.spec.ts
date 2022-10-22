@@ -8,7 +8,7 @@ import { terseAdvisoryLog2Table } from "./terse-advisory-to-table.js";
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
 
 describe("terse-object-to-table - smoke test", () => {
-  let chalkLevel = chalk.level;
+  const chalkLevel = chalk.level;
 
   before("disable chalk coloring", () => {
     chalk.level = 0;
