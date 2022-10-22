@@ -1,40 +1,37 @@
 {
   "root": true,
-  "extends": ["moving-meadow"],
+  "extends": ["moving-meadow", "plugin:@typescript-eslint/recommended"],
+  "plugins": ["@typescript-eslint"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest"
+  },
   "overrides": [
     {
-      "files": ["**/*.js"],
+      "files": ["**/*.ts"],
       "rules": {
         "unicorn/no-null": "off",
         "node/no-unsupported-features/es-syntax": "off",
         "import/no-relative-parent-imports": "off",
         "sort-imports": "off",
         "unicorn/prefer-module": "error",
-        "unicorn/no-array-for-each": "off"
+        "unicorn/no-array-for-each": "off",
+        // TypeScript + esm modules haven't landed with the eslint node &
+        // import teams yet.
+        "node/no-missing-import": "off",
+        "import/no-unresolved": "off"
       },
       "parserOptions": {
         "ecmaVersion": "latest"
       }
     },
     {
-      "files": ["**/*.spec.js"],
+      "files": ["**/*.spec.ts"],
       "env": {
         "mocha": true
       },
       "rules": {
         "no-magic-numbers": "off"
-      }
-    },
-    {
-      "files": ["types/*.ts"],
-      "plugins": ["@typescript-eslint"],
-      "extends": ["plugin:@typescript-eslint/recommended"],
-      "parser": "@typescript-eslint/parser",
-      "parserOptions": {
-        "ecmaVersion": "latest"
-      },
-      "rules": {
-        "node/no-unsupported-features/es-syntax": "off"
       }
     }
   ]
