@@ -32,6 +32,7 @@ module.exports = {
       },
       rules: {
         "no-magic-numbers": "off",
+        "security/detect-non-literal-fs-filename": "off",
       },
     },
   ],
