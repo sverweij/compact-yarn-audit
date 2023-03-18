@@ -1,7 +1,7 @@
 import textTable from "text-table";
 import chalk from "chalk";
 import stripAnsi from "strip-ansi";
-import { ITerseEntry, SeverityType } from "../types/compact-yarn-audit";
+import type { ITerseEntry, SeverityType } from "../types/compact-yarn-audit.js";
 
 function colorSeverity(pSeverity: SeverityType): string {
   const lSeverity2ChalkFunction = new Map([
