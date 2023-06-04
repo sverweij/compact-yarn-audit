@@ -8,9 +8,7 @@ const lAdvisoryLog: TerseAdvisoryLog = new TerseAdvisoryLog();
 
 process.stdin
   .pipe(ndjson.parse())
-  .on("data", (pLogEntry) => {
-    lAdvisoryLog.add(pLogEntry);
-  })
+  .on("data", lAdvisoryLog.add)
   .on("error", (pError) => {
     console.error(pError);
     process.exitCode = 1;
