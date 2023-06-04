@@ -1,5 +1,5 @@
 * text eol=lf
-dist linguist-generated
+dist/** linguist-generated
 
 *.jpg binary
 *.kra binary
