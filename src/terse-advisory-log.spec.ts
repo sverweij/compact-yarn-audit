@@ -1,17 +1,13 @@
-import { fileURLToPath } from "node:url";
 import { readFileSync } from "node:fs";
-import { join } from "node:path";
-import { deepEqual } from "node:assert";
+import { deepStrictEqual } from "node:assert";
 import { TerseAdvisoryLog } from "./terse-advisory-log.js";
-
-const __dirname = fileURLToPath(new URL(".", import.meta.url));
 
 describe("log-to-terse-object - smoke test", () => {
   it("sorts and de-duplicates log entries", () => {
     const lAdvisoryLog = new TerseAdvisoryLog();
 
     readFileSync(
-      join(__dirname, "__mocks__", "sample-output.jsonstream"),
+      new URL("__mocks__/sample-output.jsonstream", import.meta.url),
       "utf8"
     )
       .split(`\n`)
@@ -21,11 +17,11 @@ describe("log-to-terse-object - smoke test", () => {
         lAdvisoryLog.add(pLogEntry);
       });
 
-    deepEqual(
+    deepStrictEqual(
       lAdvisoryLog.get(),
       JSON.parse(
         readFileSync(
-          join(__dirname, "__fixtures__", "sample-output.terselog.json"),
+          new URL("__fixtures__/sample-output.terselog.json", import.meta.url),
           "utf8"
         )
       )
