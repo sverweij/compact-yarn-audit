@@ -5,7 +5,9 @@ import format from "./format.js";
 const lAdvisoryLog = new TerseAdvisoryLog();
 process.stdin
     .pipe(ndjson.parse())
-    .on("data", lAdvisoryLog.add)
+    .on("data", (pLogEntry) => {
+    lAdvisoryLog.add(pLogEntry);
+})
     .on("error", (pError) => {
     console.error(pError);
     process.exitCode = 1;
