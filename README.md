@@ -1,5 +1,4 @@
 [![GitHub Workflow Status](https://github.com/sverweij/compact-yarn-audit/actions/workflows/ci.yml/badge.svg)](https://github.com/sverweij/compact-yarn-audit/actions/workflows/ci.yml)
-[![Known Vulnerabilities](https://snyk.io/test/github/sverweij/compact-yarn-audit/badge.svg?targetFile=package.json)](https://snyk.io/test/github/sverweij/compact-yarn-audit?targetFile=package.json)
 [![npm stable version](https://img.shields.io/npm/v/compact-yarn-audit.svg?logo=npm)](https://npmjs.com/package/compact-yarn-audit)
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
