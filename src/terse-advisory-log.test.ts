@@ -9,7 +9,7 @@ describe("log-to-terse-object - smoke test", () => {
 
     readFileSync(
       new URL("__mocks__/sample-output.jsonstream", import.meta.url),
-      "utf8"
+      "utf8",
     )
       .split(`\n`)
       .filter(Boolean)
@@ -23,9 +23,9 @@ describe("log-to-terse-object - smoke test", () => {
       JSON.parse(
         readFileSync(
           new URL("__fixtures__/sample-output.terselog.json", import.meta.url),
-          "utf8"
-        )
-      )
+          "utf8",
+        ),
+      ),
     );
   });
 });

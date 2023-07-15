@@ -31,11 +31,11 @@ function tableTheThing(pMaxTitleWidth: number) {
 
 export function terseAdvisoryLog2Table(
   pTerseEntries: ITerseEntry[],
-  pColumnsAvailable: number = process.stdout.columns
+  pColumnsAvailable: number = process.stdout.columns,
 ): string {
   const lTable = [
     ["severity", "title", "module", "via", '"resolutions" string'].map(
-      (pHeader) => chalk.bold(pHeader)
+      (pHeader) => chalk.bold(pHeader),
     ),
   ];
   const lTableOptions: textTable.Options = {
@@ -44,11 +44,11 @@ export function terseAdvisoryLog2Table(
   };
   const lTitleMagicDivisionFactor = 5;
   const lMaxTitleWidth = Math.round(
-    pColumnsAvailable / lTitleMagicDivisionFactor
+    pColumnsAvailable / lTitleMagicDivisionFactor,
   );
 
   return textTable(
     pTerseEntries.reduce(tableTheThing(lMaxTitleWidth), lTable),
-    lTableOptions
+    lTableOptions,
   );
 }

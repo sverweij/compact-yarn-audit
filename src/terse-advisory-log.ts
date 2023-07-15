@@ -104,7 +104,7 @@ export class TerseAdvisoryLog {
   add(pEntry: INdJsonEntry) {
     if (pEntry.type === "auditAdvisory") {
       const lUsefulAttributes: ITerseEntry = extractUsefulAttributes(
-        pEntry as unknown as IAuditAdvisoryEntry
+        pEntry as unknown as IAuditAdvisoryEntry,
       );
 
       // Some audit logs are several gigabytes long. Given that there'll

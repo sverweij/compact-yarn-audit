@@ -24,17 +24,17 @@ describe("terse-object-to-table - smoke test", () => {
           readFileSync(
             new URL(
               "__fixtures__/sample-output.terselog.json",
-              import.meta.url
+              import.meta.url,
             ),
-            "utf8"
-          )
+            "utf8",
+          ),
         ),
-        125
+        125,
       ),
       readFileSync(
         new URL("__fixtures__/sample-output.table.txt", import.meta.url),
-        "utf8"
-      )
+        "utf8",
+      ),
     );
   });
 
@@ -45,17 +45,17 @@ describe("terse-object-to-table - smoke test", () => {
           readFileSync(
             new URL(
               "__fixtures__/sample-output.terselog.json",
-              import.meta.url
+              import.meta.url,
             ),
-            "utf8"
-          )
+            "utf8",
+          ),
         ),
-        1000
+        1000,
       ),
       readFileSync(
         new URL("__fixtures__/sample-output.wide-table.txt", import.meta.url),
-        "utf8"
-      )
+        "utf8",
+      ),
     );
   });
 });
