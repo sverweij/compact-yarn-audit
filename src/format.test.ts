@@ -1,4 +1,6 @@
 import { match } from "node:assert";
+import { describe, it } from "node:test";
+import { ITerseEntry } from "../types/compact-yarn-audit.js";
 import format from "./format.js";
 
 describe("format - smoke test", () => {
@@ -7,8 +9,7 @@ describe("format - smoke test", () => {
   });
 
   it("emits a table when the # of terse entries > 0", () => {
-    /** @type {import("../types/compact-yarn-audit").ITerseEntry[]} */
-    const lTerseEntries = [
+    const lTerseEntries: ITerseEntry[] = [
       {
         severity: "critical",
         title: "rotten fish is smelly",

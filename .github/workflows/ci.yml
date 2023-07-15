@@ -43,6 +43,9 @@ jobs:
       - run: npm run format
       - run: npm run lint
       - run: npm test
+        if: matrix.node-version != '16.x'
+      - run: npm run test:only-for-node-16-without-the-test-reporter
+        if: matrix.node-version == '16.x'
 
   codeql:
     name: CodeQL

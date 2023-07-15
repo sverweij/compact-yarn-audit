@@ -101,7 +101,7 @@
     "skipLibCheck": true /* Skip type checking all .d.ts files. */
   },
   "include": ["src/**/*.ts"],
-  "exclude": ["src/**/*.spec.ts"],
+  "exclude": ["src/**/*.test.ts"],
   "ts-node": {
     "transpileOnly": true,
     "files": true

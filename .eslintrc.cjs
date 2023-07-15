@@ -26,13 +26,11 @@ module.exports = {
       },
     },
     {
-      files: ["**/*.spec.ts"],
-      env: {
-        mocha: true,
-      },
+      files: ["**/*.test.ts"],
       rules: {
         "no-magic-numbers": "off",
         "security/detect-non-literal-fs-filename": "off",
+        "max-lines-per-function": "off",
       },
     },
   ],

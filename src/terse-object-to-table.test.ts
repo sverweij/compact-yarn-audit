@@ -1,17 +1,19 @@
 import { readFileSync } from "node:fs";
 import { deepStrictEqual } from "node:assert";
+import { before, after, describe, it } from "node:test";
 import chalk from "chalk";
 import { terseAdvisoryLog2Table } from "./terse-advisory-to-table.js";
 
-// eslint-disable-next-line max-lines-per-function
 describe("terse-object-to-table - smoke test", () => {
   const chalkLevel = chalk.level;
 
-  before("disable chalk coloring", () => {
+  // disable chalk coloring
+  before(() => {
     chalk.level = 0;
   });
 
-  after("put chalk color level back to its original value", () => {
+  // put chalk color level back to its original value
+  after(() => {
     chalk.level = chalkLevel;
   });
 
