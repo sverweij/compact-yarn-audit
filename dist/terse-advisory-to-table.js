@@ -1,7 +1,7 @@
-import textTable from "text-table";
+import { EOL } from "node:os";
 import chalk from "chalk";
 import stripAnsi from "strip-ansi";
-function colorSeverity(pSeverity) {
+function colorBySeverity(pSeverity, pString) {
     const lSeverity2ChalkFunction = new Map([
         ["critical", chalk.red],
         ["high", chalk.magenta],
@@ -9,29 +9,43 @@ function colorSeverity(pSeverity) {
         ["info", chalk.blue],
     ]);
     const lFunction = lSeverity2ChalkFunction.get(pSeverity) || ((pX) => pX);
-    return lFunction(pSeverity);
+    return lFunction(pString);
 }
-function tableTheThing(pMaxTitleWidth) {
-    return (pAll, pExtractedLogEntry) => {
-        pAll.push([
-            colorSeverity(pExtractedLogEntry.severity),
-            pExtractedLogEntry.title.slice(0, Math.max(0, pMaxTitleWidth)),
-            pExtractedLogEntry.module_name,
-            pExtractedLogEntry.via,
-            pExtractedLogEntry.fixString,
-        ]);
-        return pAll;
-    };
+function getColumnWidth(pTerseEntries, pColumnName) {
+    return pTerseEntries.reduce((pAll, pEntry) => Math.max(pAll, stripAnsi(pEntry[pColumnName]).length), 0);
+}
+function getColumnWidths(pTerseEntries, pWidthAvailable) {
+    const lColumns = ["severity", "title", "module_name", "via", "fixString"];
+    const lReturnValue = new Map(lColumns.map((pColumn) => {
+        return [pColumn, getColumnWidth(pTerseEntries, pColumn)];
+    }));
+    const lAllColumnsLength = Array.from(lReturnValue.values()).reduce((pAll, pLength) => {
+        return pAll + pLength;
+    }, 0);
+    const lMinimumTitleColumnWidth = 14;
+    const lSpacesPerColumn = 2;
+    const lAvailableForTitle = Math.min(lReturnValue.get("title"), Math.max(lMinimumTitleColumnWidth, pWidthAvailable -
+        (lAllColumnsLength - lReturnValue.get("title")) -
+        lSpacesPerColumn * lColumns.length));
+    lReturnValue.set("title", lAvailableForTitle);
+    return lReturnValue;
 }
 export function terseAdvisoryLog2Table(pTerseEntries, pColumnsAvailable = process.stdout.columns) {
-    const lTable = [
-        ["severity", "title", "module", "via", '"resolutions" string'].map((pHeader) => chalk.bold(pHeader)),
-    ];
-    const lTableOptions = {
-        align: ["l", "l", "l", "l", "l", "l"],
-        stringLength: (pString) => stripAnsi(pString).length,
-    };
-    const lTitleMagicDivisionFactor = 5;
-    const lMaxTitleWidth = Math.round(pColumnsAvailable / lTitleMagicDivisionFactor);
-    return textTable(pTerseEntries.reduce(tableTheThing(lMaxTitleWidth), lTable), lTableOptions);
+    const lColumnWidths = getColumnWidths(pTerseEntries, pColumnsAvailable);
+    const lTitle = chalk.bold(`${"severity".padEnd(lColumnWidths.get("severity"))}  ` +
+        `${"title".padEnd(lColumnWidths.get("title"))}  ` +
+        `${"module".padEnd(lColumnWidths.get("module_name"))}  ` +
+        `${"via".padEnd(lColumnWidths.get("via"))}  ` +
+        `"resolutions" string`);
+    const lCells = pTerseEntries
+        .map((pEntry) => {
+        return (`${colorBySeverity(pEntry.severity, `${pEntry.severity.padEnd(lColumnWidths.get("severity"))}  `)}${pEntry.title
+            .padEnd(lColumnWidths.get("title"))
+            .slice(0, lColumnWidths.get("title"))}  ` +
+            `${pEntry.module_name.padEnd(lColumnWidths.get("module_name"))}  ` +
+            `${pEntry.via.padEnd(lColumnWidths.get("via"))}  ` +
+            `${pEntry.fixString}`);
+    })
+        .join(EOL);
+    return lTitle + EOL + lCells;
 }
