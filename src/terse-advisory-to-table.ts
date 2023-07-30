@@ -23,29 +23,29 @@ type IColumnWidthMap = Map<string, number>;
 
 function getColumnWidth(
   pTerseEntries: ITerseEntry[],
-  pColumnName: string,
+  pColumnName: string
 ): number {
   return pTerseEntries.reduce(
     // @ts-expect-error strings are perfectly valid as object keys for ITerseEntry
     (pAll, pEntry) => Math.max(pAll, stripAnsi(pEntry[pColumnName]).length),
-    0,
+    0
   );
 }
 function getColumnWidths(
   pTerseEntries: ITerseEntry[],
-  pWidthAvailable: number,
+  pWidthAvailable: number
 ): IColumnWidthMap {
   const lColumns = ["severity", "title", "module_name", "via", "fixString"];
   const lReturnValue = new Map(
     lColumns.map((pColumn) => {
       return [pColumn, getColumnWidth(pTerseEntries, pColumn)];
-    }),
+    })
   );
   const lAllColumnsLength = Array.from(lReturnValue.values()).reduce(
     (pAll, pLength) => {
       return pAll + pLength;
     },
-    0,
+    0
   );
   const lMinimumTitleColumnWidth = 14;
   const lSpacesPerColumn = 2;
@@ -55,16 +55,24 @@ function getColumnWidths(
       lMinimumTitleColumnWidth,
       pWidthAvailable -
         (lAllColumnsLength - lReturnValue.get("title")!) - // all other columns
-        lSpacesPerColumn * lColumns.length, // 2 spaces per column
-    ),
+        lSpacesPerColumn * lColumns.length // 2 spaces per column
+    )
   );
   lReturnValue.set("title", lAvailableForTitle);
   return lReturnValue;
 }
 
+function truncateTitle(pTitle: string, pWidth: number): string {
+  let lReturnValue = pTitle.padEnd(pWidth).slice(0, pWidth);
+  if (pTitle.length > pWidth) {
+    lReturnValue = `${lReturnValue.slice(0, -1)}…`;
+  }
+  return lReturnValue;
+}
+
 export function terseAdvisoryLog2Table(
   pTerseEntries: ITerseEntry[],
-  pColumnsAvailable: number = process.stdout.columns,
+  pColumnsAvailable: number = process.stdout.columns
 ): string {
   const lColumnWidths = getColumnWidths(pTerseEntries, pColumnsAvailable);
   const lTitle = chalk.bold(
@@ -72,7 +80,7 @@ export function terseAdvisoryLog2Table(
       `${"title".padEnd(lColumnWidths.get("title")!)}  ` +
       `${"module".padEnd(lColumnWidths.get("module_name")!)}  ` +
       `${"via".padEnd(lColumnWidths.get("via")!)}  ` +
-      `"resolutions" string`,
+      `"resolutions" string`
   );
 
   const lCells = pTerseEntries
@@ -80,10 +88,9 @@ export function terseAdvisoryLog2Table(
       return (
         `${colorBySeverity(
           pEntry.severity,
-          `${pEntry.severity.padEnd(lColumnWidths.get("severity")!)}  `,
-        )}${pEntry.title
-          .padEnd(lColumnWidths.get("title")!)
-          .slice(0, lColumnWidths.get("title")!)}  ` +
+          `${pEntry.severity.padEnd(lColumnWidths.get("severity")!)}  `
+        )}` +
+        `${truncateTitle(pEntry.title, lColumnWidths.get("title")!)}  ` +
         `${pEntry.module_name.padEnd(lColumnWidths.get("module_name")!)}  ` +
         `${pEntry.via.padEnd(lColumnWidths.get("via")!)}  ` +
         `${pEntry.fixString}`

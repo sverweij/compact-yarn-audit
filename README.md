@@ -21,9 +21,9 @@ yarn audit --json | npx compact-yarn-audit
 ```
 severity  title                      module            via             "resolutions" string
 critical  Command Injection          destructomatic    vertex-cli      no fix available
-critical  Remote code execution whe  steering-wheel    beach-cruiser   "steering-wheel": ">=4.7.7"
+critical  Remote code execution wh…  steering-wheel    beach-cruiser   "steering-wheel": ">=4.7.7"
 critical  Prototype Pollution        steering-wheel    beach-cruiser   "steering-wheel": ">=4.1.2"
-high      Regular Expression Denial  oedipus-regex     vertexql-types  no fix available
+high      Regular Expression Denia…  oedipus-regex     vertexql-types  no fix available
 high      Command Injection          snowdash          beach-cruiser   "snowdash": ">=4.17.21"
 high      Prototype Pollution        snowdash          beach-cruiser   "snowdash": ">=4.17.12"
 high      Prototype Pollution        snowdash          beach-cruiser   "snowdash": ">=4.17.11"
@@ -35,7 +35,7 @@ high      Arbitrary Code Execution   steering-wheel    beach-cruiser   "steering
 high      Arbitrary Code Execution   steering-wheel    beach-cruiser   "steering-wheel": ">=4.5.2"
 high      Prototype Pollution        steering-wheel    beach-cruiser   "steering-wheel": ">=4.3.0"
 moderate  Information Exposure       mars-server-core  mars-server     "mars-server-core": ">=2.14.2"
-moderate  Regular Expression Denial  chestnut          beach-cruiser   "chestnut": ">=7.1.1"
+moderate  Regular Expression Denia…  chestnut          beach-cruiser   "chestnut": ">=7.1.1"
 moderate  Denial of Service          steering-wheel    beach-cruiser   "steering-wheel": ">=4.4.5"
 low       Prototype Pollution        minifog           beach-cruiser   "minifog": "<1.0.0 || >=1.2.3"
 low       Prototype Pollution        snowdash          beach-cruiser   "snowdash": ">=4.17.19"
