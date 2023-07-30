@@ -37,7 +37,7 @@
     "upem-outdated": "npm outdated --json --long | upem --dry-run",
     "upem:update": "npm outdated --json --long | upem | pbcopy && pbpaste",
     "upem:install": "npm install",
-    "version": "npm-run-all test scm:stage"
+    "version": "npm-run-all build check scm:stage"
   },
   "keywords": [
     "yarn",
