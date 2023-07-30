@@ -4,12 +4,12 @@
 
 ## What's this?
 
-It presents `yarn audit` output in a compact table, ordered by severity.
+_compact-yarn-audit_ presents `yarn audit` output in a compact table, ordered by severity.
 
 ## Usage
 
 ```sh
-yarn audit --json | npx compact-yarn-audit
+yarn audit --json | npx compact-yarn-audit@latest
 ```
 
 > Note: yarn's audit output can be quite large (gigabytes for a sizeable
