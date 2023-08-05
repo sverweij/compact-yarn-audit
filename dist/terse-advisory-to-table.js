@@ -1,6 +1,5 @@
 import { EOL } from "node:os";
 import chalk from "chalk";
-import stripAnsi from "strip-ansi";
 function colorBySeverity(pSeverity, pString) {
     const lSeverity2ChalkFunction = new Map([
         ["critical", chalk.red],
@@ -12,7 +11,7 @@ function colorBySeverity(pSeverity, pString) {
     return lFunction(pString);
 }
 function getColumnWidth(pTerseEntries, pColumnName) {
-    return pTerseEntries.reduce((pAll, pEntry) => Math.max(pAll, stripAnsi(pEntry[pColumnName]).length), 0);
+    return pTerseEntries.reduce((pAll, pEntry) => Math.max(pAll, pEntry[pColumnName].length), 0);
 }
 function getColumnWidths(pTerseEntries, pWidthAvailable) {
     const lColumns = ["severity", "title", "module_name", "via", "fixString"];

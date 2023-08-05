@@ -2,7 +2,6 @@
 /* eslint-disable security/detect-object-injection */
 import { EOL } from "node:os";
 import chalk from "chalk";
-import stripAnsi from "strip-ansi";
 import type { ITerseEntry, SeverityType } from "../types/compact-yarn-audit.js";
 
 function colorBySeverity(pSeverity: SeverityType, pString: string): string {
@@ -27,7 +26,7 @@ function getColumnWidth(
 ): number {
   return pTerseEntries.reduce(
     // @ts-expect-error strings are perfectly valid as object keys for ITerseEntry
-    (pAll, pEntry) => Math.max(pAll, stripAnsi(pEntry[pColumnName]).length),
+    (pAll, pEntry) => Math.max(pAll, pEntry[pColumnName].length),
     0,
   );
 }
