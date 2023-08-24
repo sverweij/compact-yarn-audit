@@ -1,4 +1,4 @@
-import { match } from "node:assert";
+import { match } from "node:assert/strict";
 import { describe, it } from "node:test";
 import { ITerseEntry } from "../types/compact-yarn-audit.js";
 import format from "./format.js";

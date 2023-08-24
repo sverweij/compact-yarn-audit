@@ -1,5 +1,5 @@
 import { readFileSync } from "node:fs";
-import { deepStrictEqual } from "node:assert";
+import { deepEqual } from "node:assert/strict";
 import { describe, it } from "node:test";
 import { TerseAdvisoryLog } from "./terse-advisory-log.js";
 
@@ -18,7 +18,7 @@ describe("log-to-terse-object - smoke test", () => {
         lAdvisoryLog.add(pLogEntry);
       });
 
-    deepStrictEqual(
+    deepEqual(
       lAdvisoryLog.get(),
       JSON.parse(
         readFileSync(

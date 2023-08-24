@@ -1,5 +1,5 @@
 import { readFileSync } from "node:fs";
-import { deepStrictEqual } from "node:assert";
+import { deepEqual } from "node:assert/strict";
 import { before, after, describe, it } from "node:test";
 import chalk from "chalk";
 import { terseAdvisoryLog2Table } from "./terse-advisory-to-table.js";
@@ -18,7 +18,7 @@ describe("terse-object-to-table - smoke test", () => {
   });
 
   it("transforms a terse object to a table (terminal has 125 columns available)", () => {
-    deepStrictEqual(
+    deepEqual(
       terseAdvisoryLog2Table(
         JSON.parse(
           readFileSync(
@@ -39,7 +39,7 @@ describe("terse-object-to-table - smoke test", () => {
   });
 
   it("transforms a terse object to a table (terminal has 1000 columns available)", () => {
-    deepStrictEqual(
+    deepEqual(
       terseAdvisoryLog2Table(
         JSON.parse(
           readFileSync(
