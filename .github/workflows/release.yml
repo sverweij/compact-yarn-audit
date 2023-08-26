@@ -4,7 +4,7 @@ on:
     types: [released]
 
 jobs:
-  publish:
+  publish-as-latest:
     runs-on: ubuntu-latest
     permissions:
       contents: read

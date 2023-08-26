@@ -4,7 +4,7 @@ on:
     types: [prereleased]
 
 jobs:
-  publish:
+  publish-as-beta:
     runs-on: ubuntu-latest
     permissions:
       contents: read
