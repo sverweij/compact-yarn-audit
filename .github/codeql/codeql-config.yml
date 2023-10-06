@@ -3,6 +3,5 @@ name: 'CodeQL config'
 paths:
   - dist/
   - src/
-  - types/
 queries:
   - uses: security-and-quality

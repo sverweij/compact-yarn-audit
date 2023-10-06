@@ -1,6 +1,6 @@
 import { match } from "node:assert/strict";
 import { describe, it } from "node:test";
-import { ITerseEntry } from "../types/compact-yarn-audit.js";
+import type { ITerseEntry } from "./types.js";
 import format from "./format.js";
 
 describe("format - smoke test", () => {

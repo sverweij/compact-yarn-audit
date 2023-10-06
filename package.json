@@ -3,7 +3,7 @@
   "version": "3.1.2",
   "description": "Presents output from yarn audit in a compact table",
   "engines": {
-    "node": "^16||^18||>=20"
+    "node": "^18.17||>=20"
   },
   "license": "MIT",
   "homepage": "https://github.com/sverweij/compact-yarn-audit",
@@ -18,21 +18,17 @@
   "bin": {
     "compact-yarn-audit": "dist/index.js"
   },
-  "main": "dist/index.js",
-  "exports": "./dist/index.js",
   "type": "module",
-  "types": "types/compact-yarn-audit.d.ts",
   "scripts": {
     "build": "npm-run-all clean build:ts",
     "build:ts": "tsc",
     "check": "npm-run-all format lint test",
     "clean": "rm -rf dist",
     "format": "prettier --write src/**/*.ts *.md",
-    "lint": "eslint src types --cache --cache-location node_modules/.cache/eslint/",
-    "lint:fix": "eslint src types --fix --cache --cache-location node_modules/.cache/eslint/",
+    "lint": "eslint src --cache --cache-location node_modules/.cache/eslint/",
+    "lint:fix": "eslint src --fix --cache --cache-location node_modules/.cache/eslint/",
     "scm:stage": "git add .",
     "test": "c8 node --no-warnings --loader 'ts-node/esm' --test-reporter ./tools/dot-with-summary.reporter.js --test src/*.test.ts",
-    "test:only-for-node-16-without-the-test-reporter": "node --no-warnings --loader 'ts-node/esm' --test src/*.test.ts",
     "update-dependencies": "npm-run-all upem:update upem:install format test",
     "upem-outdated": "npm outdated --json --long | upem --dry-run",
     "upem:update": "npm outdated --json --long | upem | pbcopy && pbpaste",
@@ -76,7 +72,6 @@
   },
   "files": [
     "dist",
-    "types",
     "package.json",
     "README.md"
   ]
