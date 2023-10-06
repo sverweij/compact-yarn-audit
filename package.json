@@ -29,7 +29,6 @@
     "lint:fix": "eslint src --fix --cache --cache-location node_modules/.cache/eslint/",
     "scm:stage": "git add .",
     "test": "c8 node --no-warnings --loader 'ts-node/esm' --test-reporter ./tools/dot-with-summary.reporter.js --test src/*.test.ts",
-    "test:only-for-node-16-without-the-test-reporter": "node --no-warnings --loader 'ts-node/esm' --test src/*.test.ts",
     "update-dependencies": "npm-run-all upem:update upem:install format test",
     "upem-outdated": "npm outdated --json --long | upem --dry-run",
     "upem:update": "npm outdated --json --long | upem | pbcopy && pbpaste",
