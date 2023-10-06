@@ -1,5 +1,5 @@
 import { EOL } from "node:os";
-import type { ITerseEntry } from "types/compact-yarn-audit.js";
+import type { ITerseEntry } from "./compact-yarn-audit.js";
 import { terseAdvisoryLog2Table } from "./terse-advisory-to-table.js";
 
 export default function format(pTerseEntries: ITerseEntry[]): string {
