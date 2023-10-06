@@ -2,7 +2,7 @@
 /* eslint-disable security/detect-object-injection */
 import { EOL } from "node:os";
 import chalk from "chalk";
-import type { ITerseEntry, SeverityType } from "./compact-yarn-audit.js";
+import type { ITerseEntry, SeverityType } from "./types.js";
 
 function colorBySeverity(pSeverity: SeverityType, pString: string): string {
   const lSeverity2ChalkFunction = new Map([

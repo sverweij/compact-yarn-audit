@@ -1,5 +1,5 @@
 import { createHash } from "node:crypto";
-import type { ITerseEntry, SeverityType } from "./compact-yarn-audit.js";
+import type { ITerseEntry, SeverityType } from "./types.js";
 
 interface INdJsonEntry {
   [key: string]: unknown;
