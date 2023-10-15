@@ -53,11 +53,11 @@
   },
   "devDependencies": {
     "@types/ndjson": "2.0.2",
-    "@typescript-eslint/eslint-plugin": "6.7.4",
-    "@typescript-eslint/parser": "6.7.4",
+    "@typescript-eslint/eslint-plugin": "6.7.5",
+    "@typescript-eslint/parser": "6.7.5",
     "c8": "8.0.1",
     "clean-pkg-json": "1.2.0",
-    "eslint": "8.50.0",
+    "eslint": "8.51.0",
     "eslint-config-moving-meadow": "4.0.2",
     "eslint-config-prettier": "9.0.0",
     "eslint-plugin-budapestian": "5.0.1",
@@ -71,7 +71,7 @@
     "prettier": "3.0.3",
     "tsx": "3.13.0",
     "typescript": "5.2.2",
-    "upem": "8.0.0"
+    "upem": "9.0.2"
   },
   "files": [
     "dist",
