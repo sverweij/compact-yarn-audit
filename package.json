@@ -30,7 +30,7 @@
     "prepack": "clean-pkg-json",
     "postpack": "git restore package.json",
     "scm:stage": "git add .",
-    "test": "c8 node --no-warnings --loader 'tsx' --test-reporter ./tools/dot-with-summary.reporter.js --test src/*.test.ts",
+    "test": "c8 tsx --no-warnings --test-reporter ./tools/dot-with-summary.reporter.js --test src/*.test.ts",
     "update-dependencies": "npm-run-all upem:update upem:install format test",
     "upem-outdated": "npm outdated --json --long | upem --dry-run",
     "upem:update": "npm outdated --json --long | upem | pbcopy && pbpaste",
