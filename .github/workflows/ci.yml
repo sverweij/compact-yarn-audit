@@ -24,7 +24,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node-version: [18.x, 20.x]
+        node-version: [18.x, 21.x]
         platform: [ubuntu-latest]
 
     runs-on: ${{matrix.platform}}
@@ -42,6 +42,7 @@ jobs:
       - run: npm install
       - run: npm run format
       - run: npm run lint
+      - run: npm run depcruise
       - run: npm test
 
   codeql:
