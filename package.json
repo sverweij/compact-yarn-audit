@@ -31,7 +31,7 @@
     "lint:fix": "eslint src --fix --cache --cache-location node_modules/.cache/eslint/",
     "lint": "eslint src --cache --cache-location node_modules/.cache/eslint/",
     "postpack": "git restore package.json",
-    "prepack": "clean-pkg-json",
+    "prepack": "clean-pkg-json --dry --keep overrides --keep resolutions | jq '.scripts = {test: \"echo for test, build and static analysis scripts: see the github repository\"}' > smaller-package.json && mv smaller-package.json package.json",
     "scm:stage": "git add .",
     "test": "c8 tsx --no-warnings --test-reporter ./tools/dot-with-summary.reporter.js --test src/*.test.ts",
     "update-dependencies": "npm-run-all upem:update upem:install format test",
