@@ -1,4 +1,3 @@
-import { createHash } from "node:crypto";
 import type { ITerseEntry, SeverityType } from "./types.js";
 
 interface INdJsonEntry {
@@ -54,9 +53,6 @@ interface IAuditAdvisoryEntry {
   type: "auditAdvisory";
   data: IAuditAdvisoryData;
 }
-function hash(pEntry: ITerseEntry): string {
-  return createHash("md5").update(JSON.stringify(pEntry)).digest("base64");
-}
 
 function extractUsefulAttributes(pLogEntry: IAuditAdvisoryEntry): ITerseEntry {
   const lFixable = pLogEntry.data.advisory.patched_versions !== "<0.0.0";
@@ -95,10 +91,10 @@ function orderEntry(pEntryLeft: ITerseEntry, pEntryRight: ITerseEntry): 1 | -1 {
 }
 
 export class TerseAdvisoryLog {
-  log = new Map();
+  log = new Set();
 
   constructor() {
-    this.log = new Map();
+    this.log = new Set();
   }
 
   add(pEntry: INdJsonEntry) {
@@ -108,13 +104,18 @@ export class TerseAdvisoryLog {
       );
 
       // Some audit logs are several gigabytes long. Given that there'll
-      // be quite some duplicates, the overhead of the hash will be negligible
-      // compared to the amount of memory that'd normally be needed
-      this.log.set(hash(lUsefulAttributes), lUsefulAttributes);
+      // be quite some duplicates a Set is used to avoid duplicates and
+      // to keep the log small enough to fit in memory.
+      this.log.add(JSON.stringify(lUsefulAttributes));
     }
   }
 
   get(): ITerseEntry[] {
-    return [...this.log.values()].sort(orderEntry);
+    return Array.from(this.log)
+      .map(
+        (pStringifiedEntry) =>
+          JSON.parse(pStringifiedEntry as string) as ITerseEntry,
+      )
+      .sort(orderEntry);
   }
 }
