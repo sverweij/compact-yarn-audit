@@ -1,7 +1,3 @@
-import { createHash } from "node:crypto";
-function hash(pEntry) {
-    return createHash("md5").update(JSON.stringify(pEntry)).digest("base64");
-}
 function extractUsefulAttributes(pLogEntry) {
     const lFixable = pLogEntry.data.advisory.patched_versions !== "<0.0.0";
     const lVia = pLogEntry.data.resolution.path.split(">").shift() ?? "?";
@@ -33,17 +29,19 @@ function orderEntry(pEntryLeft, pEntryRight) {
     return getKey(pEntryLeft) > getKey(pEntryRight) ? 1 : -1;
 }
 export class TerseAdvisoryLog {
-    log = new Map();
+    log = new Set();
     constructor() {
-        this.log = new Map();
+        this.log = new Set();
     }
     add(pEntry) {
         if (pEntry.type === "auditAdvisory") {
             const lUsefulAttributes = extractUsefulAttributes(pEntry);
-            this.log.set(hash(lUsefulAttributes), lUsefulAttributes);
+            this.log.add(JSON.stringify(lUsefulAttributes));
         }
     }
     get() {
-        return [...this.log.values()].sort(orderEntry);
+        return Array.from(this.log)
+            .map((pStringifiedEntry) => JSON.parse(pStringifiedEntry))
+            .sort(orderEntry);
     }
 }
