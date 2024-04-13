@@ -20,8 +20,9 @@
   },
   "type": "module",
   "scripts": {
+    "build": "npm-run-all clean build:ts build:format",
+    "build:format": "prettier --log-level warn --write --use-tabs dist",
     "build:ts": "tsc",
-    "build": "npm-run-all clean build:ts",
     "check": "npm-run-all format lint depcruise test",
     "clean": "rm -rf dist",
     "depcruise": "depcruise src",
@@ -31,7 +32,7 @@
     "lint:fix": "eslint src --fix --cache --cache-location node_modules/.cache/eslint/",
     "lint": "eslint src --cache --cache-location node_modules/.cache/eslint/",
     "postpack": "git restore package.json",
-    "prepack": "clean-pkg-json --dry --keep overrides --keep resolutions | jq '.scripts = {test: \"echo for test, build and static analysis scripts: see the github repository\"}' > smaller-package.json && mv smaller-package.json package.json",
+    "prepack": "clean-pkg-json --dry --keep overrides --keep resolutions | jq '.scripts = {test: \"echo for test, build and static analysis scripts: see the github repository\"}' > smaller-package.json && mv smaller-package.json package.json && prettier --log-level warn --write --use-tabs package.json",
     "scm:stage": "git add .",
     "test": "c8 tsx --no-warnings --test-reporter ./tools/dot-with-summary.reporter.js --test src/*.test.ts",
     "update-dependencies": "npm-run-all upem:update upem:install format test",
@@ -53,6 +54,15 @@
   },
   "resolutions": {
     "semver": "^7.5.4"
+  },
+  "upem": {
+    "policies": [
+      {
+        "package": "eslint",
+        "policy": "wanted",
+        "because": "@typescript-eslint/eslint-plugin 7.6.0 uses @typescript-eslint/parser 7.6.0 (currently _latest_) which isn't on eslint 9 yet (it peer requires ^8.56.0)"
+      }
+    ]
   },
   "devDependencies": {
     "@types/ndjson": "2.0.4",
