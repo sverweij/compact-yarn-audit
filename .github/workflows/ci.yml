@@ -24,7 +24,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node-version: [18.x, 21.x]
+        node-version: [18.x, 22.x]
         platform: [ubuntu-latest]
 
     runs-on: ${{matrix.platform}}
