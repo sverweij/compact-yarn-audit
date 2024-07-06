@@ -49,12 +49,6 @@
     "ndjson": "^2.0.0",
     "picocolors": "1.0.1"
   },
-  "overrides": {
-    "semver": "^7.5.4"
-  },
-  "resolutions": {
-    "semver": "^7.5.4"
-  },
   "upem": {
     "policies": [
       {
@@ -66,11 +60,11 @@
   },
   "devDependencies": {
     "@types/ndjson": "2.0.4",
-    "@typescript-eslint/eslint-plugin": "7.8.0",
-    "@typescript-eslint/parser": "7.8.0",
-    "c8": "9.1.0",
+    "@typescript-eslint/eslint-plugin": "7.15.0",
+    "@typescript-eslint/parser": "7.15.0",
+    "c8": "10.1.2",
     "clean-pkg-json": "1.2.0",
-    "dependency-cruiser": "16.3.1",
+    "dependency-cruiser": "16.3.6",
     "eslint": "8.57.0",
     "eslint-config-moving-meadow": "4.0.2",
     "eslint-config-prettier": "9.1.0",
@@ -79,12 +73,12 @@
     "eslint-plugin-import": "2.29.1",
     "eslint-plugin-mocha": "10.4.3",
     "eslint-plugin-node": "11.1.0",
-    "eslint-plugin-security": "3.0.0",
-    "eslint-plugin-unicorn": "52.0.0",
+    "eslint-plugin-security": "3.0.1",
+    "eslint-plugin-unicorn": "54.0.0",
     "npm-run-all": "4.1.5",
-    "prettier": "3.2.5",
-    "tsx": "4.9.0",
-    "typescript": "5.4.5",
+    "prettier": "3.3.2",
+    "tsx": "4.16.2",
+    "typescript": "5.5.3",
     "upem": "9.0.4"
   },
   "files": [
