@@ -1,19 +1,19 @@
 /* eslint-disable no-inline-comments */
 /* eslint-disable security/detect-object-injection */
 import { EOL } from "node:os";
-import chalk from "chalk";
+import pc from "picocolors";
 import type { ITerseEntry, SeverityType } from "./types.js";
 
 function colorBySeverity(pSeverity: SeverityType, pString: string): string {
-  const lSeverity2ChalkFunction = new Map([
-    ["critical", chalk.red],
-    ["high", chalk.magenta],
-    ["moderate", chalk.yellow],
-    ["info", chalk.blue],
+  const lSeverity2ColorFunction = new Map([
+    ["critical", pc.red],
+    ["high", pc.magenta],
+    ["moderate", pc.yellow],
+    ["info", pc.blue],
   ]);
 
   const lFunction =
-    lSeverity2ChalkFunction.get(pSeverity) || (<Type>(pX: Type): Type => pX);
+    lSeverity2ColorFunction.get(pSeverity) || (<Type>(pX: Type): Type => pX);
 
   return lFunction(pString);
 }
@@ -74,7 +74,7 @@ export function terseAdvisoryLog2Table(
   pColumnsAvailable: number = process.stdout.columns,
 ): string {
   const lColumnWidths = getColumnWidths(pTerseEntries, pColumnsAvailable);
-  const lTitle = chalk.bold(
+  const lTitle = pc.bold(
     `${"severity".padEnd(lColumnWidths.get("severity")!)}  ` +
       `${"title".padEnd(lColumnWidths.get("title")!)}  ` +
       `${"module".padEnd(lColumnWidths.get("module_name")!)}  ` +

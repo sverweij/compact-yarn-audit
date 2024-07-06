@@ -1,22 +1,9 @@
 import { readFileSync } from "node:fs";
 import { deepEqual } from "node:assert/strict";
-import { before, after, describe, it } from "node:test";
-import chalk from "chalk";
+import { describe, it } from "node:test";
 import { terseAdvisoryLog2Table } from "./terse-advisory-to-table.js";
 
 describe("terse-object-to-table - smoke test", () => {
-  const chalkLevel = chalk.level;
-
-  // disable chalk coloring
-  before(() => {
-    chalk.level = 0;
-  });
-
-  // put chalk color level back to its original value
-  after(() => {
-    chalk.level = chalkLevel;
-  });
-
   it("transforms a terse object to a table (terminal has 125 columns available)", () => {
     deepEqual(
       terseAdvisoryLog2Table(
