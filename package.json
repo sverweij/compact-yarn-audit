@@ -32,7 +32,7 @@
     "lint:fix": "eslint src --fix --cache --cache-location node_modules/.cache/eslint/",
     "lint": "eslint src --cache --cache-location node_modules/.cache/eslint/",
     "postpack": "git restore package.json",
-    "prepack": "clean-pkg-json --dry --keep overrides --keep resolutions | jq '.scripts = {test: \"echo for test, build and static analysis scripts: see the github repository\"}' > smaller-package.json && mv smaller-package.json package.json && prettier --log-level warn --write --use-tabs package.json",
+    "prepack": "clean-pkg-json --dry --keep overrides --keep resolutions | jq '.scripts = {test: \"echo see the github repo for test, build and analysis scripts\"}' > smaller-package.json && mv smaller-package.json package.json && prettier --log-level warn --write --use-tabs package.json",
     "scm:stage": "git add .",
     "test": "NO_COLOR=1 c8 tsx --no-warnings --test-reporter ./tools/dot-with-summary.reporter.js --test src/*.test.ts",
     "update-dependencies": "npm-run-all upem:update upem:install format test",
