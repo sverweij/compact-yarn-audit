@@ -9,7 +9,7 @@ _compact-yarn-audit_ presents `yarn audit` output in a compact table, ordered by
 ## Usage
 
 ```sh
-yarn audit --json | npx compact-yarn-audit@latest
+yarn audit --json --verbose | npx compact-yarn-audit@latest
 ```
 
 > Note: yarn's audit output can be quite large (gigabytes for a sizeable
