@@ -18,7 +18,8 @@ module.exports = {
         "unicorn/no-array-for-each": "off",
         // TypeScript + esm modules haven't landed with the eslint node &
         // import teams yet.
-        "node/no-missing-import": "off",
+        "n/no-missing-import": "off",
+        "n/no-unsupported-features/node-builtins": "off",
         "import/no-unresolved": "off",
       },
       parserOptions: {

@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-/* eslint-disable node/shebang, no-console, node/no-process-exit */
+/* eslint n/hashbang:"off" */
+/* eslint-disable no-console, n/no-process-exit */
 import split from "split2";
 import { TerseAdvisoryLog } from "./terse-advisory-log.js";
 import format from "./format.js";
