@@ -223,6 +223,7 @@ export default {
     },
     moduleSystems: ["cjs", "es6"],
     prefix: "",
+    skipAnalysisNotInRules: true,
     tsPreCompilationDeps: true,
     tsConfig: {
       fileName: "tsconfig.json",
