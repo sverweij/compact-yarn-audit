@@ -46,7 +46,6 @@
     "yarn-audit"
   ],
   "dependencies": {
-    "picocolors": "^1.1.1",
     "split2": "^4.2.0"
   },
   "devDependencies": {

@@ -1,14 +1,14 @@
 import { EOL } from "node:os";
-import pc from "picocolors";
+import { styleText } from "node:util";
 function colorBySeverity(pSeverity, pString) {
 	const lSeverity2ColorFunction = new Map([
-		["critical", pc.red],
-		["high", pc.magenta],
-		["moderate", pc.yellow],
-		["info", pc.blue],
+		["critical", "red"],
+		["high", "magenta"],
+		["moderate", "yellow"],
+		["info", "blue"],
 	]);
-	const lFunction = lSeverity2ColorFunction.get(pSeverity) || ((pX) => pX);
-	return lFunction(pString);
+	const lColor = lSeverity2ColorFunction.get(pSeverity) || "reset";
+	return styleText(lColor, pString);
 }
 function getColumnWidth(pTerseEntries, pColumnName) {
 	return pTerseEntries.reduce(
@@ -55,7 +55,8 @@ export function terseAdvisoryLog2Table(
 	pColumnsAvailable = process.stdout.columns,
 ) {
 	const lColumnWidths = getColumnWidths(pTerseEntries, pColumnsAvailable);
-	const lTitle = pc.bold(
+	const lTitle = styleText(
+		"bold",
 		`${"severity".padEnd(lColumnWidths.get("severity"))}  ` +
 			`${"title".padEnd(lColumnWidths.get("title"))}  ` +
 			`${"module".padEnd(lColumnWidths.get("module_name"))}  ` +

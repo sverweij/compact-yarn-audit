@@ -1,21 +1,22 @@
 /* eslint-disable no-inline-comments */
 /* eslint-disable security/detect-object-injection */
 import { EOL } from "node:os";
-import pc from "picocolors";
+import { styleText } from "node:util";
 import type { ITerseEntry, SeverityType } from "./types.js";
 
 function colorBySeverity(pSeverity: SeverityType, pString: string): string {
   const lSeverity2ColorFunction = new Map([
-    ["critical", pc.red],
-    ["high", pc.magenta],
-    ["moderate", pc.yellow],
-    ["info", pc.blue],
+    ["critical", "red"],
+    ["high", "magenta"],
+    ["moderate", "yellow"],
+    ["info", "blue"],
   ]);
 
-  const lFunction =
-    lSeverity2ColorFunction.get(pSeverity) || (<Type>(pX: Type): Type => pX);
+  const lColor = lSeverity2ColorFunction.get(pSeverity) || "reset";
 
-  return lFunction(pString);
+  // @ts-expect-error styleText is not properly typed yet; the 1st argument's type
+  // is still private in the type declaration. Strings work fine, though
+  return styleText(lColor, pString);
 }
 
 type IColumnWidthMap = Map<string, number>;
@@ -74,7 +75,8 @@ export function terseAdvisoryLog2Table(
   pColumnsAvailable: number = process.stdout.columns,
 ): string {
   const lColumnWidths = getColumnWidths(pTerseEntries, pColumnsAvailable);
-  const lTitle = pc.bold(
+  const lTitle = styleText(
+    "bold",
     `${"severity".padEnd(lColumnWidths.get("severity")!)}  ` +
       `${"title".padEnd(lColumnWidths.get("title")!)}  ` +
       `${"module".padEnd(lColumnWidths.get("module_name")!)}  ` +
