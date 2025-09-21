@@ -3,7 +3,7 @@
   "version": "4.0.7",
   "description": "Presents output from yarn audit in a compact table",
   "engines": {
-    "node": "^18.17||>=20"
+    "node": "^20.12||^22.13||>=24.0"
   },
   "license": "MIT",
   "homepage": "https://github.com/sverweij/compact-yarn-audit",
