@@ -50,14 +50,14 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "3.3.1",
-    "@eslint/js": "9.36.0",
+    "@eslint/js": "9.39.1",
     "@types/split2": "4.2.3",
-    "@typescript-eslint/eslint-plugin": "8.44.0",
-    "@typescript-eslint/parser": "8.44.0",
+    "@typescript-eslint/eslint-plugin": "8.48.0",
+    "@typescript-eslint/parser": "8.48.0",
     "c8": "10.1.3",
     "clean-pkg-json": "1.3.0",
-    "dependency-cruiser": "17.0.1",
-    "eslint": "9.36.0",
+    "dependency-cruiser": "17.3.1",
+    "eslint": "9.39.1",
     "eslint-config-moving-meadow": "5.0.0",
     "eslint-config-prettier": "10.1.8",
     "eslint-plugin-budapestian": "^6.0.0",
@@ -69,10 +69,10 @@
     "eslint-plugin-security": "3.0.1",
     "eslint-plugin-unicorn": "56.0.1",
     "npm-run-all2": "8.0.4",
-    "prettier": "3.6.2",
-    "tsx": "4.20.5",
-    "typescript": "5.9.2",
-    "upem": "10.0.0"
+    "prettier": "3.7.1",
+    "tsx": "4.20.6",
+    "typescript": "5.9.3",
+    "upem": "10.0.1"
   },
   "upem": {
     "policies": [
