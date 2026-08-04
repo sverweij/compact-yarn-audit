@@ -21,7 +21,7 @@ jobs:
         with:
           node-version: 24.x
           registry-url: https://registry.npmjs.org
-      - run: npm clean-install
+      - run: npm clean-install --ignore-scripts
       - name: publish as latest
         run: npm publish --provenance --access public
         if: github.event.release.prerelease == false
