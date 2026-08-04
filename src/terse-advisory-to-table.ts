@@ -1,5 +1,3 @@
-/* eslint-disable no-inline-comments */
-/* eslint-disable security/detect-object-injection */
 import { EOL } from "node:os";
 import { styleText } from "node:util";
 import type { ITerseEntry, SeverityType } from "./types.js";

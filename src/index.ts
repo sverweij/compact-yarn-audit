@@ -1,9 +1,8 @@
 #!/usr/bin/env node
-/* eslint n/hashbang:"off" */
-/* eslint-disable no-console, n/no-process-exit */
+/* oxlint-disable no-console */
 import split from "split2";
 import { TerseAdvisoryLog } from "./terse-advisory-log.js";
-import format from "./format.js";
+import { format } from "./format.js";
 
 const lAdvisoryLog: TerseAdvisoryLog = new TerseAdvisoryLog();
 

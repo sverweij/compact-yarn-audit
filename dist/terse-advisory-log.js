@@ -42,6 +42,6 @@ export class TerseAdvisoryLog {
 	get() {
 		return Array.from(this.log)
 			.map((pStringifiedEntry) => JSON.parse(pStringifiedEntry))
-			.sort(orderEntry);
+			.toSorted(orderEntry);
 	}
 }

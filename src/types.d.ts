@@ -7,3 +7,7 @@ export interface ITerseEntry {
   module_name: string;
   via: string;
 }
+
+export interface INdJsonEntry {
+  [key: string]: unknown;
+}

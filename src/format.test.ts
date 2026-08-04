@@ -1,7 +1,7 @@
 import { match } from "node:assert/strict";
 import { describe, it } from "node:test";
 import type { ITerseEntry } from "./types.js";
-import format from "./format.js";
+import { format } from "./format.js";
 
 describe("format - smoke test", () => {
   it("emits a message conveying there's no vulnerabilities when the # of terse entries === 0", () => {

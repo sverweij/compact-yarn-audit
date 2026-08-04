@@ -2,6 +2,7 @@ import { readFileSync } from "node:fs";
 import { deepEqual } from "node:assert/strict";
 import { describe, it } from "node:test";
 import { TerseAdvisoryLog } from "./terse-advisory-log.js";
+import type { INdJsonEntry } from "./types.js";
 
 describe("log-to-terse-object - smoke test", () => {
   it("sorts and de-duplicates log entries", () => {
@@ -13,8 +14,9 @@ describe("log-to-terse-object - smoke test", () => {
     )
       .split(`\n`)
       .filter(Boolean)
-      .map((pString) => JSON.parse(pString))
-      .forEach((pLogEntry) => {
+      .map((pString: string) => JSON.parse(pString) as INdJsonEntry)
+      /* oxlint-disable-next-line unicorn/no-array-for-each */
+      .forEach((pLogEntry: INdJsonEntry) => {
         lAdvisoryLog.add(pLogEntry);
       });
 

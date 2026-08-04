@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import split from "split2";
 import { TerseAdvisoryLog } from "./terse-advisory-log.js";
-import format from "./format.js";
+import { format } from "./format.js";
 const lAdvisoryLog = new TerseAdvisoryLog();
 process.stdin
 	.pipe(split(JSON.parse))

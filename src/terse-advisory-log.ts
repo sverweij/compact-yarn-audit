@@ -1,8 +1,4 @@
-import type { ITerseEntry, SeverityType } from "./types.js";
-
-interface INdJsonEntry {
-  [key: string]: unknown;
-}
+import type { ITerseEntry, SeverityType, INdJsonEntry } from "./types.js";
 
 interface IAuditAdvisoryResolution {
   id: number;
@@ -78,7 +74,6 @@ function severity2Order(pSeverity: SeverityType): number {
     low: 4,
     info: 5,
   };
-  // eslint-disable-next-line security/detect-object-injection
   return lSeverity2Order[pSeverity] || -1;
 }
 
@@ -91,13 +86,13 @@ function orderEntry(pEntryLeft: ITerseEntry, pEntryRight: ITerseEntry): 1 | -1 {
 }
 
 export class TerseAdvisoryLog {
-  log = new Set();
+  private log = new Set();
 
-  constructor() {
+  public constructor() {
     this.log = new Set();
   }
 
-  add(pEntry: INdJsonEntry) {
+  public add(pEntry: INdJsonEntry): void {
     if (pEntry.type === "auditAdvisory") {
       const lUsefulAttributes: ITerseEntry = extractUsefulAttributes(
         pEntry as unknown as IAuditAdvisoryEntry,
@@ -110,12 +105,12 @@ export class TerseAdvisoryLog {
     }
   }
 
-  get(): ITerseEntry[] {
+  public get(): ITerseEntry[] {
     return Array.from(this.log)
       .map(
         (pStringifiedEntry) =>
           JSON.parse(pStringifiedEntry as string) as ITerseEntry,
       )
-      .sort(orderEntry);
+      .toSorted(orderEntry);
   }
 }
